@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    {% load staticfiles %}
+
+    <link rel="stylesheet" href="{% static 'add_book/css/style.css' %}" media="screen" title="no title"  charset="utf-8">
+
+  </head>
+
+  <body>
+
+    <header>
+
+      <table>
+        <tr>
+          <th>id</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Category</th>
+        </tr>
+        {% for booker in show %}
+        <tr>
+          <td>{{booker.id}}</td>
+          <td>{{booker.title}}</td>
+          <td>{{booker.author}}</td>
+          <td>{{booker.category}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+
+    </header>
+
+
+    <main>
+
+      <h1>Add a Book</h1>
+
+      <form class="adding" action="/result" method="post">
+
+
+
+        <h3>Title:</h3>
+        <input type="text" name="title" value="" size="100">
+
+        <h3>Category</h3>
+        <input type="text" name="category" value="">
+
+        <h3>Author:</h3>
+        <input type="text" name="author" value="">
+
+
+        <input type="submit" name="" value="Submit!">
+
+      </form>
+
+    </main>
+
+
+
+
+
+
+
+
+  </body>
+</html>

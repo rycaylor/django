@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <header>
+      <h1>Your Gold</h1>
+      <div>
+        {{request.session.num}}
+      </div>
+    </header>
+
+    <div class="gold">
+
+      <aside class="farm">
+        <h1>Farm</h1>
+        <p>(earns 10-20 gold)</p>
+        <form class="far" action="/process_money" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="building" value="farm" />
+          <input type="submit" value="Find Gold!"/>
+        </form>
+      </aside>
+
+      <aside class="cave">
+        <h1>Cave</h1>
+        <p>(earns 5-10 gold)</p>
+        <form class="cav" action="/process_money" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="building" value="cave">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </aside>
+
+      <aside class="house">
+        <h1>House</h1>
+        <p>earns 2-5 gold</p>
+        <form class="hou" action="/process_money" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="building" value="house">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </aside>
+
+      <aside class="casino">
+        <h1>Casino</h1>
+        <p>(earns/takes 0-50 gold)</p>
+        <form class="cas" action="/process_money" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="building" value="casino">
+          <input type="submit"  value="Find Gold!">
+        </form>
+      </aside>
+
+    </div>
+
+
+    <footer>
+      <h1>Activities:</h1>
+      <div>
+        {{request.session.activity}}
+      </div>
+    </footer>
+
+    <div class="reset">
+      <form class="res" action="/reset" method="post">
+        {% csrf_token %}
+        <input type="submit" name="" value="reset">
+      </form>
+    </div>
+
+  </body>
+
+
+
+  </body>
+</html>

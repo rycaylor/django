@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {% if messages %}
+    {% for message in messages %}
+    <h3 style="color:red">{{message}}</h3>
+    {% endfor %}
+    {% endif %}
+    <h4>Welcome, {{user.first_name}}!</h4>
+    <a href="{% url 'login:logout' %}">logout</a>
+    <a href="{% url 'books:add' %}">Add a book and review</a>
+    <h3>Recent Reviews</h3>
+    {% if reviews %}
+    {% for review in reviews %}
+    <table>
+      <tr>
+        <td><a href="{% url 'books:page' id=review.book.id %}">{{review.book.title}}</a></td>
+      </tr>
+      <tr>
+        <td><a href="{% url 'books:profile' id=review.user.id %}">{{review.user.first_name}}</a></td>
+      </tr>
+        <tr>
+          <td>{{review.rating}}</td>
+        </tr>
+      <tr>
+        <td>{{review.content}}</td>
+      </tr>
+      <tr>
+        <td>posted on {{review.created_at}}</td>
+      </tr>
+
+
+    </table>
+    {% endfor %}
+    {% endif %}
+
+    <h3>Other Books with Reviews:</h3>
+
+    {% if books %}
+    {% for book in books %}
+    <table>
+      <tr>
+        <td><a href="{% url 'books:page' id=book.id %}">{{book.title}}</a></td>
+      </tr>
+    </table>
+
+
+    {% endfor %}
+    {% endif %}
+
+
+
+  </body>
+</html>

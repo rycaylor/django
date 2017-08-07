@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <a href="{% url 'event:index' %}">Home</a>
+      <a href="{% url 'login:logout' %}">Logout</a>
+    <h1>Add an Event!</h1>
+
+    {% if messages %}
+    {% for message in messages %}
+    <h3 style="color:red">{{message}}</h3>
+    {% endfor %}
+    {% endif %}
+
+    <form class="" action="{% url 'event:make_event' %}" method="post">
+      {% csrf_token %}
+      <h3>Event Name</h3>
+      <input type="text" name="event" placeholder="e.g. Birthday"value="">
+
+      <h3>Destination</h3>
+      <input type="text" name="destination" placeholder="e.g. Beccas House" value="">
+
+      <h3>Dates</h3>
+      <h4>Start</h4>
+      <input type="date" name="date_start"  value="">
+
+      <h4>End</h4>
+      <input type="date" name="date_end" value="">
+
+      <h3>Description</h3>
+      <textarea name="description" placeholder="e.g. We will go watch the fireworks and then hit up cap hill to go bar hopping" rows="8" cols="80"></textarea>
+
+
+      <input type="submit" name="" value="Add Event!">
+
+    </form>
+
+
+
+  </body>
+</html>
